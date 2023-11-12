@@ -1,0 +1,60 @@
+.profile {
+  width: 864px;
+  height: auto;
+  background: var(--base-profile, #020002);
+  box-shadow: 0px 2px 28px rgb(0, 0, 0, 0.8);
+  border-radius: 10px;
+  margin-top: -100px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  position: absolute;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.titulo {
+  font-family: Nunito;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  color: var(--base-title, #e7edf4);
+  padding: 5px;
+}
+
+.profile a {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  text-transform: uppercase;
+  color: var(--brand-blue, #3294f8);
+  display: flex;
+  gap: 8px;
+}
+
+ul {
+  display: flex;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 16px;
+  color: var(--base-span, #7b96b2);
+  font-weight: 400;
+}

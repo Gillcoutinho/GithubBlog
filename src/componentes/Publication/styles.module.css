@@ -1,0 +1,107 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.containerPublication {
+    margin-top: 72px;
+    display: flex;
+    max-width: 864px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 180px;
+}
+
+.headerPublication {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.headerPublication p {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 160%;
+    color: var(--base-subtitle, #C4D4E3);
+}
+
+.headerPublication span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+    color: var(--base-span, #7B96B2);
+}
+
+.containerPublication input {
+    display: flex;
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px 16px;
+    align-items: center;
+    color: #f4f4f4;
+    border-radius: 6px;
+    border: 1px solid var(--base-border, #1C2F41);
+    background: var(--base-input, #040F1A);
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cardContainer {
+    margin-top: 48px;
+    gap: 32px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 416px;
+    border-radius: 10px;
+    background: var(--base-post, #112131);
+    padding: 32px;
+    cursor: pointer;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.cardHeader h6 {
+    color: var(--base-title, #E7EDF4);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 160%;
+    max-width: 260px;
+}
+
+ .cardHeader span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+    color: var(--base-span, #7B96B2);
+}
+
+.card p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 160%;
+    color: var(--base-text,#AFC2D4);
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+}
+
+
