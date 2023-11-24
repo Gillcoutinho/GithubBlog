@@ -1,12 +1,11 @@
-import avatar from '../../assets/avatar.jpg';
-import seta from '../../assets/seta.svg';
-import git from '../../assets/git.svg';
-import home from '../../assets/home.svg';
-import people from '../../assets/people.svg';
-import styles from './styles.module.css';
+import avatar from "../../assets/avatar.jpg";
+import seta from "../../assets/seta.svg";
+import git from "../../assets/git.svg";
+import home from "../../assets/home.svg";
+import people from "../../assets/people.svg";
+import styles from "./styles.module.css";
 
 export function Profile(props) {
-
   return (
     <div className={styles.content}>
       <section className={styles.profile}>
@@ -22,23 +21,19 @@ export function Profile(props) {
             </li>
             <li>
               <img className={styles.img} src={home} width={16} height={16} />
-              Sindicato
+              Sinthoresp
             </li>
             <li>
               <img className={styles.img} src={people} width={16} height={16} />
               {props.userInfo.followers}
             </li>
           </ul>
-
-
         </div>
-        <a href={props.userInfo.html_url} target='_blank'>GITHUB
+        <a href={props.userInfo.html_url} target="_blank">
+          GITHUB
           <img src={seta} width={16} height={16} />
         </a>
-
       </section>
-
-     </div>
-
-  )
+    </div>
+  );
 }

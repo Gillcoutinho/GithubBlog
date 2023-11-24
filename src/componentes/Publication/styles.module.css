@@ -7,7 +7,7 @@
 .containerPublication {
     margin-top: 72px;
     display: flex;
-    max-width: 864px;
+    width: 864px;
     justify-content: center;
     flex-direction: column;
     align-items: center;

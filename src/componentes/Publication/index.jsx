@@ -1,101 +1,64 @@
 import styles from "./styles.module.css";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import { getRepoIssues } from "../../services/get";
+import { useNavigate } from "react-router-dom";
+
 
 export function Publication() {
- const [searchIssue, setSearchIssue] = useState();
+  const [searchIssue, setSearchIssue] = useState("");
+  const [issues, setIssues] = useState([]);
+  const navigate = useNavigate();
+
+
+  function goToIssueDetail(issue) {
+    return navigate(`/issue/${issue.number}`,{ replace: true });
+  }
+
+  async function handleGetIsssues() {
+    const response = await getRepoIssues(
+      searchIssue,
+      "gillcoutinho",
+      "GithubBlog"
+    );
+
+    if (response) {
+      setIssues(response.items);
+    }
+  }
+
+  useEffect(() => {
+    if (searchIssue.length > 4) {
+      handleGetIsssues();
+    }
+  }, [searchIssue]);
 
   return (
     <div className={styles.wrapper}>
       <section className={styles.containerPublication}>
         <div className={styles.headerPublication}>
           <p>Publicações</p>
-          <span>6 Publicações</span>
+          <span>{issues.length} Publicações</span>
         </div>
 
-        <input value={searchIssue} type="text" onChange={(event) => setSearchIssue(event.target.value)} placeholder="Buscar Conteúdo" />
+        <input
+          value={searchIssue}
+          type="text"
+          onChange={(event) => setSearchIssue(event.target.value)}
+          placeholder="Buscar Conteúdo"
+        />
 
         <div className={styles.cardContainer}>
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-            <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-            <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-            <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
-            <h6>JavaScript data types and data structures</h6>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have.
-            </p>
-          </div>
+          {issues?.map((issue) => {
+            return (
+              <div onClick={()=> goToIssueDetail(issue)} key={issue.number} className={styles.card}>
+                <div className={styles.cardHeader}>
+                  <h6>{issue.title}</h6>
+                  <span>{issue.updated_at}</span>
+                </div>
+                <p>{issue.body}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

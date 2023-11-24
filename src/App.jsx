@@ -4,8 +4,8 @@ import { Publication } from "./componentes/Publication";
 import { Postlink } from "./componentes/Postlink";
 import { Postinfo } from "./componentes/Postinfo";
 import styles from "./app.module.css";
-import { BrowserRouter } from 'react-router-dom';
-import { CustomRoutes } from './routes';
+import { BrowserRouter } from "react-router-dom";
+import { CustomRoutes } from "./routes";
 
 export function App() {
   return (

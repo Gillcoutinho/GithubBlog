@@ -1,5 +1,8 @@
 export const PATHS = {
-  USER: (userName) => `users/${userName}`,
-  SEARCH_API: (text,userName, repo) => `search/issues?q=${text}repo:${userName}/${repo}`,
   ISSUE_DETAIL: (nameGit, repoName, id) => `/repos/${nameGit}/${repoName}/issues/${id}`,
+  USER: (userName) => `users/${userName}`,
+  SEARCH_API: function (text, userName, repo) {
+    const queryString = 'q=' + encodeURIComponent(`${text} repo:${userName}/${repo}`);
+    return `search/issues?${queryString}`;
+  }
 }

@@ -5,16 +5,34 @@ import calender from "../../assets/calender.svg";
 import coments from "../../assets/coments.svg";
 import styles from "./styles.module.css";
 
-export function Postinfo() {
+export function Postinfo(props) {
+  
+  const date = props?.issueDetail?.create_at ? new Date(props.issueDetail.create_at) : ' ';
+  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  const formattedDate = date ? new Intl.DateTimeFormat('pt-BR', options).format(date) : ' ';
+  console.log(date)
+  console.log(formattedDate)
+
   return (
     <div className={styles.content}>
       <section className={styles.profile}>
+        <div className={styles.links}>
+          <a href="/">
+            <img src={Iconseta} width={16} height={16} />
+            VOLTAR
+          </a>
+          <a href={"https://github.com/Gillcoutinho"} target="_blank">
+            VER O GITHUB
+            <img src={seta} width={16} height={16} />
+          </a>
+        </div>
+        <br></br>
         <div className={styles.titulo}>
-          <h3>JavaScript data Types and data Structures</h3>
+           {props?.issueDetail?.title}
           <ul>
             <li>
               <img className={styles.img} src={git} width={16} height={16} />
-              Gill Coutinho
+              GillCoutinho
             </li>
             <li>
               <img
@@ -23,7 +41,7 @@ export function Postinfo() {
                 width={16}
                 height={16}
               />
-              Há 1 dia
+              {props?.issueDetail?.formattedDate}
             </li>
             <li>
               <img
@@ -32,20 +50,12 @@ export function Postinfo() {
                 width={16}
                 height={16}
               />
-              Comentários
+              {props?.issueDetail?.comments}
             </li>
           </ul>
         </div>
-          <a href="#">
-            <img src={Iconseta} width={16} height={16} />
-            VOLTAR
-          </a>
-
-          <a href="#">
-            VER NO GITHUB
-            <img src={seta} width={16} height={16} />
-        </a>
       </section>
+      <div className={styles.container}>{props?.issueDetail?.body}</div>
     </div>
   );
 }

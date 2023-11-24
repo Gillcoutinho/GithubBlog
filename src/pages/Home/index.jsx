@@ -5,8 +5,7 @@ import { getUserInfo } from '../../services/get';
 import { useState, useEffect } from "react";
 
 export function Home() {
-  const [userInfo, setUserInfo] = useState();
-
+const [userInfo, setUserInfo] = useState();
 
 async function getUserInfoByApi() {
   const response = await getUserInfo('gillcoutinho');
@@ -19,6 +18,10 @@ async function getUserInfoByApi() {
  useEffect(() => {
   getUserInfoByApi();
  }, [])
+
+ if(!userInfo) {
+  return 'carregando...';
+ }
 
   return (
     <div>
